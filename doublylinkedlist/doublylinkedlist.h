@@ -13,17 +13,14 @@ typedef struct node {
 
 }node;
 
-
 node* get_new_node(int data);
 void destroy_node(node* node);
 void append_node(node** head, node* Node);
-node* get_at_node(node** head, int location);
+node* get_at_node(node* head, int location);
 node* delete_node(node** head, node* remove);
 void insert_node(node* current, node* newnode);
-
 int count_node(node* head);
 void print_node(node** head);
-
 
 
 #endif

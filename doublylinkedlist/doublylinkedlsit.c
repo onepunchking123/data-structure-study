@@ -27,16 +27,16 @@ void append_node(node** head,node* Node) {
 		node* tail = (*head);
 		while (tail->next != NULL) {
 			tail = tail->next;
-		}
+		}//여기에 도착하면 반복문을 탈출한 상태이므로 가장 끝 노드에 도달한 상태임
 		tail->next = Node;
 		Node->prev = tail;
 	}
 
 }
 
-node* get_at_node(node** head,int location) {
+node* get_at_node(node* head,int location) {
 
-	node* tmp = *head;
+	node* tmp = head;
 	while (tmp != NULL && (--location) >= 0)
 	{
 		tmp = tmp->next;
@@ -50,7 +50,8 @@ node* delete_node(node** head, node* remove) {
 	if (*head == remove)
 	{
 		*head = remove->next;
-		(*head)->prev = NULL;
+		if(*head !=NULL)
+			(*head)->prev = NULL;
 		
 
 		remove->next = NULL;
@@ -66,6 +67,7 @@ node* delete_node(node** head, node* remove) {
 		remove->prev = NULL;
 		remove->next = NULL;
 	}
+	free(remove);
 
 }
 void insert_node(node* current, node* newnode) 
